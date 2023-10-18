@@ -1,13 +1,30 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import userImage from "../../assets/istockphoto-1130884625-612x612.jpg";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    logOut()
+      .then((res) => {
+        console.log(res.user);
+        navigate("/login");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
   const links = (
     <>
       <li>
-        <NavLink to={"/"}>Home</NavLink>{" "}
+        <NavLink to={"/home"}>Home</NavLink>{" "}
       </li>
       <li>
-        <NavLink to={"/add-product"}>Add Product</NavLink>{" "}
+        <NavLink to={"/add-products"}>Add Product</NavLink>{" "}
       </li>
       <li>
         <NavLink to={"/cart"}>My Cart</NavLink>{" "}
@@ -51,7 +68,23 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          {user && <Link className="user-name">{user.displayName}</Link>}
+
+          <div className="avatar mx-2">
+            <div className="w-10 rounded-full">
+              <img src={user?.photoURL ? user?.photoURL : userImage} />
+            </div>
+          </div>
+
+          {!user ? (
+            <Link to={"/login"} className="nav-btn">
+              Login
+            </Link>
+          ) : (
+            <Link onClick={handleLogOut} className="nav-btn">
+              Logout
+            </Link>
+          )}
         </div>
       </div>
     </div>

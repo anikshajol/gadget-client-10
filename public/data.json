@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "brand": "Apple",
+    "image": "https://i.ibb.co/MBkmP9G/iphone-15-pro-titanium-blue-01-500x500.webp"
+  },
+  {
+    "id": 2,
+    "brand": "Samsung",
+    "image": "https://i.ibb.co/xhcCTCt/galaxy-s23-ultra-green-01-500x500.webp"
+  },
+  {
+    "id": 3,
+    "brand": "OnePlus",
+    "image": "https://i.ibb.co/fD4KC2k/10t-green-500x500.webp"
+  },
+  {
+    "id": 4,
+    "brand": "Sony",
+    "image": "https://i.ibb.co/tDjCnDC/dualsense-charging-station-500x500.jpg"
+  },
+  {
+    "id": 5,
+    "brand": "Xiaomi",
+    "image": "https://i.ibb.co/0q4hLBy/xiaomi-mdy-08-ev-adapter-charger-02-500x500.jpg"
+  },
+  {
+    "id": 6,
+    "brand": "Google",
+    "image": "https://i.ibb.co/CW8GJZz/pixel-6a-01-500x500.webp"
+  }
+]
