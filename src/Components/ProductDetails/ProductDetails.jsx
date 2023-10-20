@@ -12,7 +12,9 @@ const ProductDetails = () => {
   console.log(brand);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch(
+      "https://as-gadget-server-side-k3thwcd9r-anikshajol.vercel.app/products"
+    )
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -27,13 +29,16 @@ const ProductDetails = () => {
   //   const { name, photo, price, rating, type, _id } = findProducts;
 
   const handleAddToCart = (photo, name) => {
-    fetch(`http://localhost:5000/cart`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ photo, name }),
-    })
+    fetch(
+      `https://as-gadget-server-side-k3thwcd9r-anikshajol.vercel.app/cart`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ photo, name }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

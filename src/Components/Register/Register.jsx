@@ -18,7 +18,7 @@ const Register = () => {
 
   const { createUser } = useContext(AuthContext);
 
-  console.log(email, displayName, password, photo);
+  // console.log(email, displayName, password, photo);
 
   const handleCreateUser = () => {
     // set validation password
@@ -32,7 +32,7 @@ const Register = () => {
     } else {
       createUser(email, password, displayName, photo)
         .then((res) => {
-          console.log(res.user);
+          // console.log(res.user);
 
           updateProfile(res.user, {
             displayName: displayName,
@@ -49,7 +49,6 @@ const Register = () => {
             });
         })
         .catch((err) => {
-          console.log(err.message);
           setError(err.message);
         });
     }
@@ -155,7 +154,7 @@ const Register = () => {
             <button
               type="button"
               onClick={handleCreateUser}
-              className="w-full primary-btn"
+              className="w-full btn primary-btn"
             >
               Create account
             </button>

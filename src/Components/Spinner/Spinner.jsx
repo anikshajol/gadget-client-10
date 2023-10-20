@@ -1,7 +1,7 @@
 const Spinner = () => {
   return (
-    <div>
-      <span className="loading loading-bars loading-lg"></span>
+    <div className="flex justify-center">
+      <span className="loading loading-infinity loading-lg text-blue-700"></span>
     </div>
   );
 };

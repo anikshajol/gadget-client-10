@@ -14,6 +14,7 @@ import { Toaster } from "react-hot-toast";
 import Products from "./Components/Products/Products.jsx";
 import ProductDetails from "./Components/ProductDetails/ProductDetails.jsx";
 import Cart from "./Components/Cart/Cart.jsx";
+import PrivateRoute from "./PrivateRoute/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,33 +25,54 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch(`http://localhost:5000/brands`),
+        loader: () =>
+          fetch(
+            `https://as-gadget-server-side-k3thwcd9r-anikshajol.vercel.app/brands`
+          ),
       },
       {
         path: "/home",
         element: <Home></Home>,
-        loader: () => fetch(`http://localhost:5000/brands`),
+        loader: () =>
+          fetch(
+            `https://as-gadget-server-side-k3thwcd9r-anikshajol.vercel.app/brands`
+          ),
       },
       {
         path: "/add-products",
-        element: <AddProducts></AddProducts>,
+        element: (
+          <PrivateRoute>
+            <AddProducts></AddProducts>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/cart",
-        element: <Cart></Cart>,
-        loader: () => fetch(`http://localhost:5000/cart`),
+        element: (
+          <PrivateRoute>
+            <Cart></Cart>
+          </PrivateRoute>
+        ),
+        loader: () =>
+          fetch(
+            `https://as-gadget-server-side-k3thwcd9r-anikshajol.vercel.app/cart`
+          ),
       },
       {
         path: "/products/:brand",
         element: <Products></Products>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.brand}`),
+          fetch(
+            `https://as-gadget-server-side-k3thwcd9r-anikshajol.vercel.app/products/${params.brand}`
+          ),
       },
       {
         path: "/products/:brand/:id",
         element: <ProductDetails></ProductDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.brand}/${params.id}`),
+          fetch(
+            `https://as-gadget-server-side-k3thwcd9r-anikshajol.vercel.app/products/${params.brand}/${params.id}`
+          ),
       },
       {
         path: "/login",

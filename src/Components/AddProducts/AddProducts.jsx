@@ -16,13 +16,16 @@ const AddProducts = () => {
 
     console.log(products);
 
-    fetch(`http://localhost:5000/products`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(products),
-    })
+    fetch(
+      `https://as-gadget-server-side-k3thwcd9r-anikshajol.vercel.app/products`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(products),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

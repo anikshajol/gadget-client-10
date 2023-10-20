@@ -94,7 +94,7 @@ const Login = () => {
             />
           </div>
 
-          <button type="submit" className="w-full primary-btn">
+          <button type="submit" className="w-full btn primary-btn">
             Login to your account
           </button>
         </form>
