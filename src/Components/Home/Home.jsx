@@ -1,10 +1,14 @@
 import Header from "../Header/Header";
 import Brand from "../Brand/Brand";
 import Footer from "../Footer/Footer";
+import "./Home.css";
 
 import { useLoaderData } from "react-router-dom";
+import { useTheme } from "../../AuthProvider/ThemeProvider";
 
 const Home = () => {
+  const { theme } = useTheme();
+  console.log(theme);
   //   const [brands, setBrands] = useState([]);
   //   useEffect(() => {
   //     fetch("/data.json")
@@ -16,7 +20,8 @@ const Home = () => {
   console.log(loadedData);
 
   return (
-    <div>
+    <div className={`app.${theme}`}>
+      <button className="btn btn-primary">Click me</button>
       <Header></Header>
       <div className=" max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {loadedData.map((brands) => (

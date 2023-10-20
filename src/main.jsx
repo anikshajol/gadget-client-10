@@ -16,6 +16,7 @@ import ProductDetails from "./Components/ProductDetails/ProductDetails.jsx";
 import Cart from "./Components/Cart/Cart.jsx";
 import PrivateRoute from "./PrivateRoute/PrivateRoute.jsx";
 import UpdateProducts from "./Components/UpdateProducts/UpdateProducts.jsx";
+import { ThemeProvider } from "./AuthProvider/ThemeProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -68,11 +69,11 @@ const router = createBrowserRouter([
           ),
       },
       {
-        path: "/products/:id",
+        path: "/update/:brand/:id",
         element: <UpdateProducts></UpdateProducts>,
         loader: ({ params }) =>
           fetch(
-            `https://as-gadget-server-side-k3thwcd9r-anikshajol.vercel.app/products/${params.id}`
+            `https://localhost:5000/products/${params.brand}/${params.id}/${params.name}`
           ),
       },
       {
@@ -98,9 +99,10 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-      {" "}
-      <RouterProvider router={router}></RouterProvider>
-      <Toaster></Toaster>
+      <ThemeProvider>
+        <RouterProvider router={router}></RouterProvider>
+        <Toaster></Toaster>
+      </ThemeProvider>
     </AuthProvider>
   </React.StrictMode>
 );

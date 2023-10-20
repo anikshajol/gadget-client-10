@@ -69,21 +69,28 @@ const ProductDetails = () => {
 
           <p> Price: {findProducts?.price}</p>
           <p>{findProducts?.rating}/10</p>
-          {/* <p>{description}</p> */}
-          <Link>
-            <button
-              onClick={() =>
-                handleAddToCart(
-                  findProducts?.photo,
-                  findProducts?.name,
-                  findProducts?.price
-                )
-              }
-              className="btn btn-primary"
-            >
-              Add to Cart
-            </button>
-          </Link>
+          <p>{findProducts?.description}</p>
+          <div>
+            <Link>
+              <button
+                onClick={() =>
+                  handleAddToCart(
+                    findProducts?.photo,
+                    findProducts?.name,
+                    findProducts?.price
+                  )
+                }
+                className="btn btn-primary"
+              >
+                Add to Cart
+              </button>
+            </Link>
+            <Link>
+              <Link to={`/update/${findProducts?.brand}/${findProducts?._id}`}>
+                <button className="btn btn-secondary">Update</button>
+              </Link>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
