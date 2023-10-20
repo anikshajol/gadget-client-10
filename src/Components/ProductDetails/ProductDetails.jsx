@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProductDetails = () => {
   const { brand } = useParams();
@@ -21,11 +22,28 @@ const ProductDetails = () => {
   //   products
   //   .find((product) => product.brand == brand)
   const findProducts =
-    products && products.find((item) => item.brand === brand);
+    products && products?.find((item) => item.brand === brand);
 
   console.log(findProducts);
 
-  const { description, name, photo, price, rating, type } = findProducts;
+  const { description, name, photo, price, rating, type, _id } = findProducts;
+
+  const handleAddToCart = (productID) => {
+    fetch(`http://localhost:5000/cart`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ productID }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire("Good job!", "Your data added Successfully!");
+        }
+      });
+  };
 
   return (
     <div>
@@ -45,6 +63,14 @@ const ProductDetails = () => {
           <p> Price: {price}</p>
           <p>{rating}/10</p>
           <p>{description}</p>
+          <Link>
+            <button
+              onClick={() => handleAddToCart(_id)}
+              className="btn btn-primary"
+            >
+              Add to Cart
+            </button>
+          </Link>
         </div>
       </div>
     </div>
