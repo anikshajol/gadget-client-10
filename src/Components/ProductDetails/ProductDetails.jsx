@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const ProductDetails = () => {
   const { brand } = useParams();
-  //   const [products, setProducts] = useState();
+
   console.log(brand);
 
   const [products, setProducts] = useState();
@@ -26,13 +26,13 @@ const ProductDetails = () => {
 
   //   const { name, photo, price, rating, type, _id } = findProducts;
 
-  const handleAddToCart = (productID) => {
+  const handleAddToCart = (photo, name) => {
     fetch(`http://localhost:5000/cart`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ productID }),
+      body: JSON.stringify({ photo, name }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -67,7 +67,9 @@ const ProductDetails = () => {
           {/* <p>{description}</p> */}
           <Link>
             <button
-              onClick={() => handleAddToCart(findProducts?._id)}
+              onClick={() =>
+                handleAddToCart(findProducts?.photo, findProducts?.name)
+              }
               className="btn btn-primary"
             >
               Add to Cart

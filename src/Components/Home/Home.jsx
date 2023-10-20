@@ -1,5 +1,6 @@
 import Header from "../Header/Header";
 import Brand from "../Brand/Brand";
+import Footer from "../Footer/Footer";
 
 import { useLoaderData } from "react-router-dom";
 
@@ -22,6 +23,7 @@ const Home = () => {
           <Brand key={brands._id} brands={brands}></Brand>
         ))}
       </div>
+      <Footer></Footer>
     </div>
   );
 };

@@ -13,6 +13,7 @@ import AuthProvider from "./AuthProvider/AuthProvider.jsx";
 import { Toaster } from "react-hot-toast";
 import Products from "./Components/Products/Products.jsx";
 import ProductDetails from "./Components/ProductDetails/ProductDetails.jsx";
+import Cart from "./Components/Cart/Cart.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
       {
         path: "/add-products",
         element: <AddProducts></AddProducts>,
+      },
+      {
+        path: "/cart",
+        element: <Cart></Cart>,
+        loader: () => fetch(`http://localhost:5000/cart`),
       },
       {
         path: "/products/:brand",
