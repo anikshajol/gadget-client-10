@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const ProductsByBrand = ({ products }) => {
-  console.log(products.brand);
-  const { brand, description, name, photo, price, rating, type } = products;
+  //   console.log(products.brand);
+  const { brand, description, name, photo, price, rating, type, _id } =
+    products;
   return (
     <div>
       {brand === undefined ? (
@@ -23,7 +25,10 @@ const ProductsByBrand = ({ products }) => {
             <p>{rating}/10</p>
             <p>{description.slice(0, 50) + ".."}</p>
             <div className="flex justify-between">
-              <button className="btn btn-primary">Details</button>
+              <Link to={`/products/${brand}/${_id}`}>
+                {" "}
+                <button className="btn btn-primary">Details</button>
+              </Link>
               <button className="btn btn-secondary">Update</button>
             </div>
           </div>
