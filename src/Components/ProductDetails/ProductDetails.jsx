@@ -22,11 +22,9 @@ const ProductDetails = () => {
   //   products
   //   .find((product) => product.brand == brand)
   const findProducts =
-    products && products?.find((item) => item.brand === brand);
+    products && products.find((item) => item.brand === brand);
 
-  console.log(findProducts);
-
-  const { description, name, photo, price, rating, type, _id } = findProducts;
+  //   const { name, photo, price, rating, type, _id } = findProducts;
 
   const handleAddToCart = (productID) => {
     fetch(`http://localhost:5000/cart`, {
@@ -45,27 +43,31 @@ const ProductDetails = () => {
       });
   };
 
+  if (!findProducts) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <h2>Product Details</h2>
 
       <div className="card py-5 px-2 shadow-xl">
         <figure className="scale-75 ">
-          <img className="h-80 object-cover" src={photo} alt="" />
+          <img className="h-80 object-cover" src={findProducts?.photo} alt="" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{name}</h2>
+          <h2 className="card-title">{findProducts?.name}</h2>
           <div className="flex justify-between items-center">
-            <p>Brand: {brand}</p>
-            <p> Type: {type}</p>
+            <p>Brand: {findProducts?.brand}</p>
+            <p> Type: {findProducts?.type}</p>
           </div>
 
-          <p> Price: {price}</p>
-          <p>{rating}/10</p>
-          <p>{description}</p>
+          <p> Price: {findProducts?.price}</p>
+          <p>{findProducts?.rating}/10</p>
+          {/* <p>{description}</p> */}
           <Link>
             <button
-              onClick={() => handleAddToCart(_id)}
+              onClick={() => handleAddToCart(findProducts?._id)}
               className="btn btn-primary"
             >
               Add to Cart
