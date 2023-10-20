@@ -11,6 +11,7 @@ import Login from "./Components/Login/Login.jsx";
 import Register from "./Components/Register/Register.jsx";
 import AuthProvider from "./AuthProvider/AuthProvider.jsx";
 import { Toaster } from "react-hot-toast";
+import Products from "./Components/Products/Products.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,14 +22,22 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch(`http://localhost:5000/brands`),
       },
       {
         path: "/home",
         element: <Home></Home>,
+        loader: () => fetch(`http://localhost:5000/brands`),
       },
       {
         path: "/add-products",
         element: <AddProducts></AddProducts>,
+      },
+      {
+        path: "/products/:brand",
+        element: <Products></Products>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.brand}`),
       },
       {
         path: "/login",
