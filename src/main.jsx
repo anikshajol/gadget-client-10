@@ -71,7 +71,9 @@ const router = createBrowserRouter([
         path: "/products/:id",
         element: <UpdateProducts></UpdateProducts>,
         loader: ({ params }) =>
-          fetch(`https://localhost/5000/products/${params.id}`),
+          fetch(
+            `https://as-gadget-server-side-k3thwcd9r-anikshajol.vercel.app/products/${params.id}`
+          ),
       },
       {
         path: "/products/:brand/:id",

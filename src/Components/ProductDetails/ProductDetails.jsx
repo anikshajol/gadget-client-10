@@ -28,7 +28,7 @@ const ProductDetails = () => {
 
   //   const { name, photo, price, rating, type, _id } = findProducts;
 
-  const handleAddToCart = (photo, name) => {
+  const handleAddToCart = (photo, name, price) => {
     fetch(
       `https://as-gadget-server-side-k3thwcd9r-anikshajol.vercel.app/cart`,
       {
@@ -36,7 +36,7 @@ const ProductDetails = () => {
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify({ photo, name }),
+        body: JSON.stringify({ photo, name, price }),
       }
     )
       .then((res) => res.json())
@@ -73,7 +73,11 @@ const ProductDetails = () => {
           <Link>
             <button
               onClick={() =>
-                handleAddToCart(findProducts?.photo, findProducts?.name)
+                handleAddToCart(
+                  findProducts?.photo,
+                  findProducts?.name,
+                  findProducts?.price
+                )
               }
               className="btn btn-primary"
             >
