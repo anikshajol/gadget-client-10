@@ -15,6 +15,7 @@ import Products from "./Components/Products/Products.jsx";
 import ProductDetails from "./Components/ProductDetails/ProductDetails.jsx";
 import Cart from "./Components/Cart/Cart.jsx";
 import PrivateRoute from "./PrivateRoute/PrivateRoute.jsx";
+import UpdateProducts from "./Components/UpdateProducts/UpdateProducts.jsx";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,12 @@ const router = createBrowserRouter([
           fetch(
             `https://as-gadget-server-side-k3thwcd9r-anikshajol.vercel.app/products/${params.brand}`
           ),
+      },
+      {
+        path: "/products/:id",
+        element: <UpdateProducts></UpdateProducts>,
+        loader: ({ params }) =>
+          fetch(`https://localhost/5000/products/${params.id}`),
       },
       {
         path: "/products/:brand/:id",

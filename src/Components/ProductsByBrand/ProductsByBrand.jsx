@@ -29,7 +29,9 @@ const ProductsByBrand = ({ products }) => {
                 {" "}
                 <button className="btn btn-primary">Details</button>
               </Link>
-              <button className="btn btn-secondary">Update</button>
+              <Link to={`/products/${_id}`}>
+                <button className="btn btn-secondary">Update</button>
+              </Link>
             </div>
           </div>
         </div>
