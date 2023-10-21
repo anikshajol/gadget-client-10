@@ -85,10 +85,9 @@ const ProductDetails = () => {
                 Add to Cart
               </button>
             </Link>
-            <Link>
-              <Link to={`/update/${findProducts?.brand}/${findProducts?._id}`}>
-                <button className="btn btn-secondary">Update</button>
-              </Link>
+
+            <Link to={`/update/${findProducts.brand}/${findProducts._id}`}>
+              <button className="btn btn-secondary">Update</button>
             </Link>
           </div>
         </div>

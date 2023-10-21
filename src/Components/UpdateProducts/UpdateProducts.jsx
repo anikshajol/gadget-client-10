@@ -21,7 +21,7 @@ const UpdateProducts = () => {
 
     console.log(products);
 
-    fetch(`https://localhost:5000/products/${brand}/${_id}/${name}`, {
+    fetch(`https://localhost:5000/products/${brand}/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
