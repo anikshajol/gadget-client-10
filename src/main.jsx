@@ -70,8 +70,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/update/:brand/:id",
-        element: <UpdateProducts></UpdateProducts>,
-        loader: ({ params }) => `http://localhost:5000/products/${params.id}`,
+        element: (
+          <PrivateRoute>
+            <UpdateProducts></UpdateProducts>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          `http://as-gadget-server-side-k3thwcd9r-anikshajol.vercel.app/products/${params.id}`,
       },
       {
         path: "/products/:brand/:id",
